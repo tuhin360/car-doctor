@@ -18,7 +18,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="navbar bg-base-100 shadow-sm sticky top-0 z-50">
+    <nav className="navbar sticky top-0 z-50">
       {/* Left Section */}
       <div className="navbar-start">
         {/* Mobile Dropdown */}
@@ -48,7 +48,7 @@ const Navbar = () => {
                 <Link
                   href={item.link}
                   className={
-                    pathname === item.link ? "font-bold" : ""
+                    pathname === item.link ? "font-bold text-black" : ""
                   }
                 >
                   {item.name}
