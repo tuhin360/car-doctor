@@ -7,8 +7,8 @@ const HomePage = () => {
   return (
     <div className="my-4">
       <BannerSection />
-      <ServicesSection />
       <AboutUsSection/>
+      <ServicesSection/>
     </div>
   );
 };

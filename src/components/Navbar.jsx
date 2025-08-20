@@ -18,7 +18,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="navbar sticky top-0 z-50">
+    <nav className="navbar bg-white sticky top-0 z-50">
       {/* Left Section */}
       <div className="navbar-start">
         {/* Mobile Dropdown */}
