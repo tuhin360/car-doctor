@@ -83,16 +83,16 @@ const renderArrowNext = (onClickHandler, hasNext, label) => {
 const BannerSection = () => {
   return (
     <div
-      className="w-full relative overflow-hidden rounded-lg"
+      className="w-full relative overflow-hidden md:rounded-lg"
       aria-label="Image Carousel"
     >
       <Carousel
         showArrows={true}
-        // autoPlay  //Todo: uncomment to enable autoplay  
+        // autoPlay  //Todo: uncomment to enable   
         infiniteLoop 
         showStatus={false}
         showThumbs={false}
-        showIndicators={false}
+        showIndicators={true}
         interval={4000}
         stopOnHover
         transitionTime={600}
