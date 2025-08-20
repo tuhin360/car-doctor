@@ -83,7 +83,7 @@ const renderArrowNext = (onClickHandler, hasNext, label) => {
 const BannerSection = () => {
   return (
     <div
-      className="w-full relative overflow-hidden md:rounded-lg"
+      className="w-full relative overflow-hidden md:rounded-lg mb-26"
       aria-label="Image Carousel"
     >
       <Carousel

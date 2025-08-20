@@ -3,7 +3,7 @@ import React from "react";
 
 const AboutUsSection = () => {
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 gap-12 my-24 px-4 md:px-0">
+    <section className="grid grid-cols-1 md:grid-cols-2 gap-12 px-4 md:px-0 mb-20">
       {/* Left: Images */}
       <div className="relative flex justify-center md:justify-start items-center mt-6 md:mt-0">
         {/* Main Image */}
