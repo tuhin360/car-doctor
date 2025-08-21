@@ -72,9 +72,6 @@ const ServiceDetailsPage = async ({ params }) => {
           {/* Facilities Grid */}
           {Array.isArray(data.facility) && data.facility.length > 0 && (
             <div className="mt-8">
-              <h4 className="text-2xl font-semibold text-gray-800 mb-6">
-                Included Facilities
-              </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 {data.facility.map((item, index) => (
                   <div

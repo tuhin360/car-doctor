@@ -4,7 +4,11 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "i.ibb.co",
+        hostname: "**", // সব https host allow করবে
+      },
+      {
+        protocol: "http",
+        hostname: "**", // চাইলে http ও allow করতে পারো
       },
     ],
   },

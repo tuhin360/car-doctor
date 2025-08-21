@@ -3,6 +3,7 @@ import ServicesSection from "./components/ServicesSection";
 import BannerSection from "./components/BannerSection";
 import AboutUsSection from "./components/AboutUsSection";
 import LocationSection from "./components/LocationSection";
+import PopularProductSection from "./components/PopularProductSection";
 
 const HomePage = () => {
   return (
@@ -11,6 +12,7 @@ const HomePage = () => {
       <AboutUsSection/>
       <ServicesSection/>
       <LocationSection/>
+      <PopularProductSection/>
     </div>
   );
 };

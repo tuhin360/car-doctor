@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa6";
+import SectionHeader from "./SectionHeader";
 
 export default async function ServicesPage() {
   // 🔧 Use environment variable if API URL changes
@@ -13,18 +14,13 @@ export default async function ServicesPage() {
   return (
     <div className="py-12 px-6 max-w-7xl mx-auto">
       {/* Section Header */}
-      <div className="text-center mb-14">
-        <h4 className="text-lg md:text-xl font-semibold text-orange-500 mb-2 tracking-wide">
-          Our Services
-        </h4>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 leading-tight mb-4">
-          Our Service Area
-        </h2>
-        <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-          The majority have suffered alteration in some form, by injected
-          humour, or randomised words which don't look even slightly believable.
-        </p>
-      </div>
+      <SectionHeader
+        subtitle={"Our Services"}
+        title={"Our Service Area"}
+        description={
+          "The majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
+        }
+      />
 
       {/* Services Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
