@@ -3,7 +3,12 @@
 import React from "react";
 import SectionHeader from "./SectionHeader";
 import Image from "next/image";
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaInstagram,
+} from "react-icons/fa";
 
 const teamMembers = [
   {
@@ -39,7 +44,6 @@ const teamMembers = [
       instagram: "#",
     },
   },
-  
 ];
 
 const TeamSection = () => {
@@ -48,7 +52,7 @@ const TeamSection = () => {
       <SectionHeader
         subtitle="Team"
         title="Meet Our Team"
-        description="The majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
+        description="Get to know the skilled professionals behind Car Doctor — passionate, certified, and dedicated to keeping your vehicle in perfect condition."
       />
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
@@ -64,8 +68,12 @@ const TeamSection = () => {
               alt={member.name}
               className="w-full h-72 object-cover rounded-2xl mb-4"
             />
-            <h3 className="text-xl font-semibold text-gray-800">{member.name}</h3>
-            <p className="text-orange-500 font-medium mb-4">{member.expertise}</p>
+            <h3 className="text-xl font-semibold text-gray-800">
+              {member.name}
+            </h3>
+            <p className="text-orange-500 font-medium mb-4">
+              {member.expertise}
+            </p>
 
             {/* Social Icons */}
             <div className="flex gap-3 mt-auto">

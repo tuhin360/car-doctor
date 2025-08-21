@@ -15,7 +15,7 @@ export default async function PopularProductSection() {
       <SectionHeader
         subtitle="Popular Products"
         title="Browse Our Products"
-        description="The majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
+        description="Discover our most loved car care solutions — expertly crafted, customer-approved, and designed to keep your vehicle in top condition."
       />
 
       {/* Products Grid */}

@@ -6,6 +6,7 @@ import LocationSection from "./components/LocationSection";
 import PopularProductSection from "./components/PopularProductSection";
 import TeamSection from "./components/TeamSection";
 import FeatureSection from "./components/FeatureSection";
+import TestimonialSection from "./components/TestimonialSection";
 
 const HomePage = () => {
   return (
@@ -17,6 +18,7 @@ const HomePage = () => {
       <PopularProductSection/>
       <TeamSection/>
       <FeatureSection/>
+      <TestimonialSection/>
     </div>
   );
 };

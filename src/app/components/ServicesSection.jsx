@@ -15,11 +15,9 @@ export default async function ServicesPage() {
     <div className="py-12 px-6 max-w-7xl mx-auto">
       {/* Section Header */}
       <SectionHeader
-        subtitle={"Our Services"}
-        title={"Our Service Area"}
-        description={
-          "The majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
-        }
+        subtitle="Our Services"
+        title="Our Service Area"
+        description="We offer a wide range of professional car services to keep your vehicle running smoothly. From engine repair to full maintenance, we’ve got you covered."
       />
 
       {/* Services Grid */}
