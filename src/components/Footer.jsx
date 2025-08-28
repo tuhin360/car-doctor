@@ -21,6 +21,7 @@ const Footer = () => {
             alt="Company Logo"
             width={141}
             height={115}
+            priority
             className="mb-2"
           />
           <h2 className="font-bold text-2xl text-center md:ml-4">Car Doctor</h2>
