@@ -8,8 +8,10 @@ export default async function ServicesPage() {
   const res = await fetch("http://localhost:3000/api/services", {
     cache: "no-store",
   });
+  // console.log(res);
 
   const services = await res.json();
+  // console.log(services);
 
   return (
     <div className="py-12 px-6 max-w-7xl mx-auto">

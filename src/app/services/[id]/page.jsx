@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FaArrowRight, FaFileAlt } from "react-icons/fa";
 
 const ServiceDetailsPage = async ({ params }) => {
-  const { id } = params;
+  const { id } = await params;
 
   let data = null;
 
@@ -45,13 +45,13 @@ const ServiceDetailsPage = async ({ params }) => {
               "linear-gradient(to right, rgba(0,0,0,0.6) 20%, rgba(0,0,0,0.2) 60%, transparent)",
           }}
         />
-        <h2 className="absolute top-1/2 left-6 md:left-1/4 transform -translate-y-1/2 text-white font-bold text-3xl sm:text-4xl md:text-5xl drop-shadow-md">
+        <h2 className="absolute top-1/2 left-6 md:left-1/12 transform -translate-y-1/2 text-white font-bold text-3xl sm:text-4xl md:text-5xl drop-shadow-md">
           Service Details
         </h2>
       </div>
 
       {/* Main Grid Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 px-6 md:px-10 max-w-7xl mx-auto pb-20">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 px-6 md:px-0 max-w-7xl mx-auto pb-20">
         {/* Main Content */}
         <div className="lg:col-span-8 space-y-8">
           {/* Service Image */}
@@ -176,8 +176,8 @@ const ServiceDetailsPage = async ({ params }) => {
                 <button
                   className={`flex items-center justify-between w-full px-6 py-4 mt-3 rounded-xl font-medium transition-all duration-300 ${
                     i === 0
-                      ? "bg-orange-500 text-white hover:bg-orange-600"
-                      : "bg-white text-gray-800 hover:bg-gray-50 border border-gray-300"
+                      ? "bg-orange-500 text-white hover:bg-orange-600 cursor-pointer"
+                      : "bg-white text-gray-800 hover:bg-gray-50 border border-gray-300 cursor-pointer"
                   }`}
                 >
                   <span>{service}</span>
@@ -227,7 +227,7 @@ const ServiceDetailsPage = async ({ params }) => {
             </h3>
 
             {/* Special Offer */}
-            <div className="relative mt-6 bg-white text-black p-5 rounded-lg shadow">
+            <div className="relative my-6 bg-white text-black p-5 rounded-lg shadow">
               <h4 className="font-bold text-xl">
                 <span className="text-orange-500">Car Doctor</span> Special
               </h4>
@@ -252,7 +252,7 @@ const ServiceDetailsPage = async ({ params }) => {
                 : "N/A"}
             </h3>
             <Link href="/checkout">
-              <button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-6 rounded-xl transition duration-300">
+              <button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-6 rounded-xl transition duration-300 cursor-pointer">
                 Proceed to Checkout
               </button>
             </Link>

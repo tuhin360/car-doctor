@@ -17,12 +17,13 @@ const Footer = () => {
         {/* 1. Logo + Short Text + Social Icons */}
         <div className="flex flex-col items-center sm:items-start gap-4">
           <Image
-            src="/assets/logo.svg"
+            src="/assets/images/services/gearLogo.png"
             alt="Company Logo"
-            width={79}
-            height={64}
+            width={141}
+            height={115}
             className="mb-2"
           />
+          <h2 className="font-bold text-2xl text-center md:ml-4">Car Doctor</h2>
           <p className="text-gray-400 text-sm sm:text-base">
             We provide top-notch automotive services with expert mechanics and
             unmatched reliability.

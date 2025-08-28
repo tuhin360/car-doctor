@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { CiSearch } from "react-icons/ci";
+import { FaRegUser } from "react-icons/fa6";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 
 const Navbar = () => {
@@ -56,7 +57,11 @@ const Navbar = () => {
                   href={item.link}
                   className={`flex items-center gap-2 px-3 py-2 rounded-md 
                              transition-all duration-200 hover:bg-orange-50 hover:text-orange-500
-                             ${pathname === item.link ? "text-orange-500 font-semibold" : "text-gray-700"}`}
+                             ${
+                               pathname === item.link
+                                 ? "text-orange-500 font-semibold"
+                                 : "text-gray-700"
+                             }`}
                 >
                   {item.name}
                 </Link>
@@ -86,14 +91,22 @@ const Navbar = () => {
                 href={item.link}
                 className={`px-1 py-2 text-gray-700 transition-colors duration-200 
                            hover:text-orange-500 text-base font-medium
-                           ${pathname === item.link ? "text-orange-500 font-semibold" : ""}`}
+                           ${
+                             pathname === item.link
+                               ? "text-orange-500 font-semibold"
+                               : ""
+                           }`}
               >
                 {item.name}
                 {/* Animated Underline */}
                 <span
                   className={`absolute bottom-0 left-0 h-0.5 bg-orange-500 w-0 
                              transition-all duration-300 ease-in-out 
-                             ${pathname === item.link ? "w-full" : "hover:w-full"}`}
+                             ${
+                               pathname === item.link
+                                 ? "w-full"
+                                 : "hover:w-full"
+                             }`}
                 />
               </Link>
             </li>
@@ -109,8 +122,10 @@ const Navbar = () => {
           className="relative p-2 text-gray-700 hover:text-orange-500 transition-all duration-200 group"
         >
           <HiOutlineShoppingBag className="w-6 h-6 transform group-hover:scale-110 cursor-pointer" />
-          <span className="absolute inset-0 rounded-md bg-orange-100 opacity-0 
-                          group-hover:opacity-30 transition-opacity duration-300 pointer-events-none" />
+          <span
+            className="absolute inset-0 rounded-md bg-orange-100 opacity-0 
+                          group-hover:opacity-30 transition-opacity duration-300 pointer-events-none"
+          />
         </button>
 
         {/* Search Icon */}
@@ -119,8 +134,10 @@ const Navbar = () => {
           className="relative p-2 text-gray-700 hover:text-orange-500 transition-all duration-200 group"
         >
           <CiSearch className="w-6 h-6 transform group-hover:scale-110 cursor-pointer" />
-          <span className="absolute inset-0 rounded-md bg-orange-100 opacity-0 
-                          group-hover:opacity-30 transition-opacity duration-300 pointer-events-none" />
+          <span
+            className="absolute inset-0 rounded-md bg-orange-100 opacity-0 
+                          group-hover:opacity-30 transition-opacity duration-300 pointer-events-none"
+          />
         </button>
 
         {/* Appointment Button */}
@@ -129,9 +146,18 @@ const Navbar = () => {
                      transition-all duration-300 ease-in-out 
                      focus:outline-none focus:ring-2 focus:ring-orange-300 focus:ring-offset-2 
                      hover:shadow-lg transform hover:scale-105 cursor-pointer"
-                    
         >
           Appointment
+        </button>
+
+        {/* Login Button */}
+        <button
+          className="px-2.5 py-2.5 border-2 border-orange-500 text-orange-500 font-medium rounded-lg  hover:bg-orange-500 hover:text-white 
+                     transition-all duration-300 ease-in-out 
+                     focus:outline-none focus:ring-2 focus:ring-orange-300 focus:ring-offset-2 
+                     hover:shadow-lg transform hover:scale-105 cursor-pointer"
+        >
+          <Link href="/login">Login</Link>
         </button>
       </div>
     </nav>

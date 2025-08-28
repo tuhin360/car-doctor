@@ -4,7 +4,7 @@ import { ObjectId } from "mongodb"; // Important: For MongoDB _id lookup
 
 export async function GET(request, { params }) {
   try {
-    const { id } = params;
+    const { id } = await params;
 
     // Validate ID
     if (!id) {
