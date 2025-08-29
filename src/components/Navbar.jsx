@@ -1,15 +1,17 @@
 "use client";
-
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { CiSearch } from "react-icons/ci";
-import { FaRegUser } from "react-icons/fa6";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const {data: session, status} = useSession();
+  // const session = useSession();
+  // console.log(session);
 
   const navItems = [
     { name: "Home", link: "/" },
@@ -150,17 +152,25 @@ const Navbar = () => {
           Appointment
         </button>
 
-        {/* Login Button */}
+      {/* Login/Logout Button */}
+    
+      {status === "authenticated" ? (
         <button
-          className="px-2.5 py-2.5 border-2 border-orange-500 text-orange-500 font-medium rounded-lg  hover:bg-orange-500 hover:text-white 
-                     transition-all duration-300 ease-in-out 
-                     focus:outline-none focus:ring-2 focus:ring-orange-300 focus:ring-offset-2 
-                     hover:shadow-lg transform hover:scale-105 cursor-pointer"
+          onClick={() => signOut({ callbackUrl: "/" })}
+          className="px-4 py-2 border-2 border-red-500 text-white bg-red-500 font-medium rounded-lg hover:bg-red-600 hover:text-white transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-offset-2 hover:shadow-lg transform hover:scale-105 cursor-pointer"
         >
-          <Link href="/login">Login</Link>
+          Logout
         </button>
+      ) : (
+        <Link
+          href="/login"
+          className="px-4 py-2 border-2 border-red-500 text-white bg-red-500 font-medium rounded-lg hover:bg-red-600 hover:text-white transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-offset-2 hover:shadow-lg transform hover:scale-105 cursor-pointer"
+        >
+          Login
+        </Link>
+      )}
       </div>
-    </nav>
+    </nav> 
   );
 };
 

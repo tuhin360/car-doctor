@@ -1,4 +1,5 @@
-import ProductCard from "@/components/ProductCard";
+
+import ProductCard from "../../components/ProductCard";
 import SectionHeader from "./SectionHeader";
 import Link from "next/link";
 

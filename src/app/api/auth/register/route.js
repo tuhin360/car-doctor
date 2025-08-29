@@ -1,4 +1,5 @@
-import clientPromise from "@/lib/mongodb";
+"use server"
+import clientPromise from "../../../../lib/mongodb";
 import bcrypt from "bcrypt";
 
 export async function POST(request) {

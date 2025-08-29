@@ -1,5 +1,6 @@
 // app/api/services/[id]/route.js
-import clientPromise from "@/lib/mongodb";
+// import clientPromise from "@/lib/mongodb";
+import clientPromise from "../../../../lib/mongodb";
 import { ObjectId } from "mongodb"; // Important: For MongoDB _id lookup
 
 export async function GET(request, { params }) {

@@ -1,62 +1,56 @@
 "use client";
-import { useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import toast, { Toaster } from "react-hot-toast";
-import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa6";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
+import { useState } from "react";
+import {
+  FaFacebookF,
+  FaGoogle,
+  FaLinkedinIn,
+  FaEye,
+  FaEyeSlash,
+} from "react-icons/fa";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
-export default function RegisterForm() {
+const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
-
+  const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
 
     try {
-      const res = await fetch("/api/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
+      const res = await signIn("credentials", {
+        email,
+        password,
+        callbackUrl: "/",
+        redirect: false,
       });
 
-      const data = await res.json();
-
-      if (res.ok) {
-        toast.success("User registered successfully!");
-        form.reset();
+      if (res?.error) {
+        toast.error(res.error);
       } else {
-        alert(data.error);
+        toast.success("Login successful!");
+        form.reset();
+         router.push("/");
       }
+
+     
     } catch (err) {
-      toast.error("Registration error:", err);
+      toast.error("Login failed. Try again!");
+      console.error(err);
     }
   };
-
   return (
     <div>
-      <h1 className="text-3xl font-bold text-center mb-6">Sign Up</h1>
+      <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center">
+        Login
+      </h1>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div>
-          <label
-            htmlFor="name"
-            className="block text-sm font-medium text-gray-600 mb-2"
-          >
-            Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Your name"
-            className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            required
-          />
-        </div>
-
+        {/* Email */}
         <div>
           <label
             htmlFor="email"
@@ -67,13 +61,13 @@ export default function RegisterForm() {
           <input
             type="email"
             id="email"
-            name="email"
             placeholder="Your email"
             className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
             required
           />
         </div>
 
+        {/* Password */}
         <div className="relative">
           <label
             htmlFor="password"
@@ -84,9 +78,8 @@ export default function RegisterForm() {
           <input
             type={showPassword ? "text" : "password"}
             id="password"
-            name="password"
-            className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
             placeholder="Your password"
+            className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
             required
           />
           <button
@@ -98,13 +91,15 @@ export default function RegisterForm() {
           </button>
         </div>
 
+        {/* Sign in button */}
         <button
           type="submit"
-          className="w-full bg-[#FF3811] hover:bg-[#f53610] text-white px-6 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl cursor-pointer"
+          className="w-full bg-[#FF3811] hover:bg-[#f53610] text-white px-6 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl  cursor-pointer"
         >
-          Sign Up
+          Sign In
         </button>
       </form>
+
       {/* Or sign in with */}
       <div className="mt-8">
         <p className="text-center text-gray-500 mb-4">Or, Sign in with</p>
@@ -123,14 +118,16 @@ export default function RegisterForm() {
 
       {/* Already have account */}
       <p className="text-center text-gray-600 mt-6">
-        Already have an account?{" "}
+        Don&apos;t have an account?{" "}
         <Link
-          href="/login"
+          href="/register"
           className="text-blue-600 hover:underline font-semibold"
         >
-          Login
+          Register
         </Link>
       </p>
     </div>
   );
-}
+};
+
+export default LoginForm;
