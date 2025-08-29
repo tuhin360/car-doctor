@@ -9,9 +9,13 @@ import SocialLogin from "./SocialLogin";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
@@ -20,22 +24,20 @@ const LoginForm = () => {
       const res = await signIn("credentials", {
         email,
         password,
-        callbackUrl: "/",
-        redirect: false,
+        redirect: false, // we will handle manually
       });
 
       if (res?.error) {
-        toast.error(res.error);
-      } else {
-        toast.success("Login successful!");
-        form.reset();
-        router.push("/");
-      }
+        toast.error(res.error || "Invalid credentials. Try again!");
+      }  
     } catch (err) {
-      toast.error("Login failed. Try again!");
       console.error(err);
+      toast.error("Something went wrong. Please try again!");
+    } finally {
+      setLoading(false);
     }
   };
+
   return (
     <div>
       <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center">
@@ -54,6 +56,7 @@ const LoginForm = () => {
           <input
             type="email"
             id="email"
+            name="email" // ✅ added
             placeholder="Your email"
             className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
             required
@@ -71,6 +74,7 @@ const LoginForm = () => {
           <input
             type={showPassword ? "text" : "password"}
             id="password"
+            name="password" // ✅ added
             placeholder="Your password"
             className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
             required
@@ -87,16 +91,17 @@ const LoginForm = () => {
         {/* Sign in button */}
         <button
           type="submit"
-          className="w-full bg-[#FF3811] hover:bg-[#f53610] text-white px-6 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl  cursor-pointer"
+          disabled={loading}
+          className="w-full bg-[#FF3811] hover:bg-[#f53610] text-white px-6 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
         >
-          Sign In
+          {loading ? "Signing in..." : "Sign In"}
         </button>
       </form>
 
       {/* Or sign in with */}
-      <SocialLogin/>
+      <SocialLogin />
 
-      {/* Already have account */}
+      {/* Register link */}
       <p className="text-center text-gray-600 mt-6">
         Don&apos;t have an account?{" "}
         <Link

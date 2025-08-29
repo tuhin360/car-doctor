@@ -7,6 +7,7 @@ import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
 import LinkedInProvider from "next-auth/providers/linkedin";
 
+
 const authOptions = {
   providers: [
     CredentialsProvider({
@@ -56,10 +57,36 @@ const authOptions = {
       clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
     }),
   ],
-  // session: { strategy: "jwt" },
-  // secret: process.env.NEXTAUTH_SECRET,
+  session: { strategy: "jwt" },
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/login", // optional custom login page
+  },
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      // console.log({ user, account, profile, email, credentials });
+      if (account) {
+        const { providerAccountId, provider } = account;
+        const { email: user_email, image, name } = user;
+        const client = await clientPromise;
+        const db = client.db(process.env.DB_NAME);
+        const existingUser = await db
+          .collection("users")
+          .findOne({ providerAccountId });
+        if (!existingUser) {
+          await db
+            .collection("users")
+            .insertOne({
+              email: user_email,
+              name,
+              image,
+              provider,
+              providerAccountId,
+            });
+        }
+      }
+      return true;
+    },
   },
 };
 

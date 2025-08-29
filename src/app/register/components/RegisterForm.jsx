@@ -5,9 +5,11 @@ import toast, { Toaster } from "react-hot-toast";
  
 import Link from "next/link";
 import SocialLogin from "../../../app/login/components/SocialLogin";
+import { useRouter } from "next/navigation";
 
 export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,6 +30,7 @@ export default function RegisterForm() {
       if (res.ok) {
         toast.success("User registered successfully!");
         form.reset();
+        router.push("/login");
       } else {
         alert(data.error);
       }
