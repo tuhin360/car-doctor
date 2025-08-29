@@ -2,15 +2,10 @@
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
-import {
-  FaFacebookF,
-  FaGoogle,
-  FaLinkedinIn,
-  FaEye,
-  FaEyeSlash,
-} from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import SocialLogin from "./SocialLogin";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -34,10 +29,8 @@ const LoginForm = () => {
       } else {
         toast.success("Login successful!");
         form.reset();
-         router.push("/");
+        router.push("/");
       }
-
-     
     } catch (err) {
       toast.error("Login failed. Try again!");
       console.error(err);
@@ -101,20 +94,7 @@ const LoginForm = () => {
       </form>
 
       {/* Or sign in with */}
-      <div className="mt-8">
-        <p className="text-center text-gray-500 mb-4">Or, Sign in with</p>
-        <div className="flex justify-center gap-4">
-          <button className="bg-gray-100 p-3 rounded-full hover:scale-110 transition cursor-pointer shadow-sm">
-            <FaFacebookF className="text-blue-600 text-lg" />
-          </button>
-          <button className="bg-gray-100 p-3 rounded-full hover:scale-110 transition cursor-pointer shadow-sm">
-            <FaGoogle className="text-red-500 text-lg" />
-          </button>
-          <button className="bg-gray-100 p-3 rounded-full hover:scale-110 transition cursor-pointer shadow-sm">
-            <FaLinkedinIn className="text-blue-700 text-lg" />
-          </button>
-        </div>
-      </div>
+      <SocialLogin/>
 
       {/* Already have account */}
       <p className="text-center text-gray-600 mt-6">

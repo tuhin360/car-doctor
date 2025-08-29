@@ -9,9 +9,9 @@ import { HiOutlineShoppingBag } from "react-icons/hi2";
 
 const Navbar = () => {
   const pathname = usePathname();
-  const {data: session, status} = useSession();
+  const { data: session, status } = useSession();
   // const session = useSession();
-  // console.log(session);
+  console.log(session);
 
   const navItems = [
     { name: "Home", link: "/" },
@@ -151,26 +151,43 @@ const Navbar = () => {
         >
           Appointment
         </button>
+        {status === "authenticated" ? (
+          <div className="relative group">
+            <Image
+              src={session?.user?.image || "/assets/images/user/user.png"}
+              alt="user"
+              width={40}
+              height={40}
+              className="rounded-full cursor-pointer"
+            />
+            {/* Tooltip */}
+            <span className="absolute left-1/2 -translate-x-1/2 mt-2 px-2 py-1 text-sm text-white bg-gray-800 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              {session?.user?.name}
+            </span>
+          </div>
+        ) : (
+          ""
+        )}
 
-      {/* Login/Logout Button */}
-    
-      {status === "authenticated" ? (
-        <button
-          onClick={() => signOut({ callbackUrl: "/" })}
-          className="px-4 py-2 border-2 border-red-500 text-white bg-red-500 font-medium rounded-lg hover:bg-red-600 hover:text-white transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-offset-2 hover:shadow-lg transform hover:scale-105 cursor-pointer"
-        >
-          Logout
-        </button>
-      ) : (
-        <Link
-          href="/login"
-          className="px-4 py-2 border-2 border-red-500 text-white bg-red-500 font-medium rounded-lg hover:bg-red-600 hover:text-white transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-offset-2 hover:shadow-lg transform hover:scale-105 cursor-pointer"
-        >
-          Login
-        </Link>
-      )}
+        {/* Login/Logout Button */}
+
+        {status === "authenticated" ? (
+          <button
+            onClick={() => signOut({ callbackUrl: "/" })}
+            className="px-4 py-2 border-2 border-red-500 text-white bg-red-500 font-medium rounded-lg hover:bg-red-600 hover:text-white transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-offset-2 hover:shadow-lg transform hover:scale-105 cursor-pointer"
+          >
+            Logout
+          </button>
+        ) : (
+          <Link
+            href="/login"
+            className="px-4 py-2 border-2 border-red-500 text-white bg-red-500 font-medium rounded-lg hover:bg-red-600 hover:text-white transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-offset-2 hover:shadow-lg transform hover:scale-105 cursor-pointer"
+          >
+            Login
+          </Link>
+        )}
       </div>
-    </nav> 
+    </nav>
   );
 };
 

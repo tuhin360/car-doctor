@@ -2,8 +2,9 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
-import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa6";
+ 
 import Link from "next/link";
+import SocialLogin from "../../../app/login/components/SocialLogin";
 
 export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -106,20 +107,7 @@ export default function RegisterForm() {
         </button>
       </form>
       {/* Or sign in with */}
-      <div className="mt-8">
-        <p className="text-center text-gray-500 mb-4">Or, Sign in with</p>
-        <div className="flex justify-center gap-4">
-          <button className="bg-gray-100 p-3 rounded-full hover:scale-110 transition cursor-pointer shadow-sm">
-            <FaFacebookF className="text-blue-600 text-lg" />
-          </button>
-          <button className="bg-gray-100 p-3 rounded-full hover:scale-110 transition cursor-pointer shadow-sm">
-            <FaGoogle className="text-red-500 text-lg" />
-          </button>
-          <button className="bg-gray-100 p-3 rounded-full hover:scale-110 transition cursor-pointer shadow-sm">
-            <FaLinkedinIn className="text-blue-700 text-lg" />
-          </button>
-        </div>
-      </div>
+      <SocialLogin/>
 
       {/* Already have account */}
       <p className="text-center text-gray-600 mt-6">
