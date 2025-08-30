@@ -4,21 +4,22 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 const CheckoutForm = ({ data }) => {
-  console.log("Service Data", data);
-  const { data: session } = useSession();
-  console.log("Logged in User Data", session);
+
+//   console.log("Service Data", data);
+
+const { data: session } = useSession();
+//   console.log("Logged in User Data", session);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const form = e.target;
     const name = form.name.value;
     const date = form.date.value;
     const email = form.email.value;
-    // const amount = form.amount.value;
     const phone = form.phone.value;
     const address = form.address.value;
     const bookingPayload = {
-      // Session
+      // Session info
       customerName: name,
       email,
 
@@ -38,7 +39,7 @@ const CheckoutForm = ({ data }) => {
     console.log("Booking Payload", bookingPayload);
 
     try {
-      const res = await fetch("/api/services", {
+      const res = await fetch("http://localhost:3000/api/bookings", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
