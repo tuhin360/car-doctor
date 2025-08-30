@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import MyBookingsTable from "../../components/tables/MyBookingsTable";
 
@@ -26,6 +25,13 @@ const MyBookings = () => {
     fetchBookings();
   }, []);
 
+  // Handle booking deletion - removes from UI instantly
+  const handleBookingDeleted = (deletedId) => {
+    setBookings(prevBookings => 
+      prevBookings.filter(booking => booking._id !== deletedId)
+    );
+  };
+
   // Show loading state
   if (loading) {
     return (
@@ -40,7 +46,10 @@ const MyBookings = () => {
 
   return (
     <div className="p-6">
-      <MyBookingsTable bookings={bookings} />
+      <MyBookingsTable 
+        bookings={bookings} 
+        onDeleteBooking={handleBookingDeleted} 
+      />
     </div>
   );
 };
