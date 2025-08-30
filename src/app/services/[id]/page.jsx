@@ -1,3 +1,4 @@
+import CoverSection from "../../../components/CoverSection";
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight, FaFileAlt } from "react-icons/fa";
@@ -29,26 +30,8 @@ const ServiceDetailsPage = async ({ params }) => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <div className="relative my-8 md:my-12">
-        <Image
-          src="/assets/images/checkout/checkout.png"
-          alt="Checkout"
-          width={1280}
-          height={300}
-          className="w-full h-auto object-cover rounded-lg"
-        />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to right, rgba(0,0,0,0.6) 20%, rgba(0,0,0,0.2) 60%, transparent)",
-          }}
-        />
-        <h2 className="absolute top-1/2 left-6 md:left-1/12 transform -translate-y-1/2 text-white font-bold text-3xl sm:text-4xl md:text-5xl drop-shadow-md">
-          Service Details
-        </h2>
-      </div>
+      {/* Cover Section */}
+     <CoverSection title={"Service Details"} />
 
       {/* Main Grid Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 px-6 md:px-0 max-w-7xl mx-auto pb-20">
@@ -213,7 +196,7 @@ const ServiceDetailsPage = async ({ params }) => {
           </div>
 
           {/* Logo & Special Offer */}
-          <div className="bg-black p-6 rounded-xl text-white">
+          <div className="bg-black px-6 py-14 rounded-xl text-white">
             <Image
               src="/assets/images/services/gearLogo.png"
               alt="Car Doctor Logo"
@@ -242,7 +225,7 @@ const ServiceDetailsPage = async ({ params }) => {
           </div>
 
           {/* Price & Checkout */}
-          <div className="space-y-5">
+          <div className="space-y-6">
             <h3 className="font-bold text-3xl text-gray-800">
               Price: $
               {typeof data.price === "number"
@@ -251,8 +234,8 @@ const ServiceDetailsPage = async ({ params }) => {
                 ? parseFloat(data.price).toFixed(2)
                 : "N/A"}
             </h3>
-            <Link href="/checkout">
-              <button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-6 rounded-xl transition duration-300 cursor-pointer">
+            <Link href={`/checkout/${data._id}`}>
+              <button className="w-full bg-orange-500 hover:bg-orange-600 text-2xl text-white font-bold py-6 px-6 rounded-xl transition duration-300 cursor-pointer">
                 Proceed to Checkout
               </button>
             </Link>

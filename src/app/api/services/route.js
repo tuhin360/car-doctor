@@ -17,3 +17,26 @@ export async function GET() {
     );
   }
 }
+
+// POST: Add a new service
+export async function POST(req) {
+  try {
+    const body = await req.json(); // Parse JSON from request
+    const client = await clientPromise;
+    const db = client.db(process.env.DB_NAME);
+
+    // Insert into services collection
+    const result = await db.collection("bookings").insertOne(body);
+
+    return Response.json(
+      { message: "Service created successfully", insertedId: result.insertedId },
+      { status: 201 }
+    );
+  } catch (error) {
+    return Response.json(
+      { error: "Failed to create service" },
+      { status: 500 }
+    );
+  }
+}
+
