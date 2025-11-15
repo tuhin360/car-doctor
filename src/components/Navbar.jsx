@@ -11,14 +11,15 @@ const Navbar = () => {
   const pathname = usePathname();
   const { data: session, status } = useSession();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  console.log(session);
+  
+  // console.log(session);
 
   const navItems = [
     { name: "Home", link: "/" },
-    { name: "About", link: "/about" },
     { name: "Services", link: "/services" },
-    { name: "Blog", link: "/blog" },
     { name: "My Bookings", link: "/my-bookings" },
+    { name: "Blog", link: "/blog" },
+    { name: "About", link: "/about" },
     { name: "Contact", link: "/contact" },
   ];
 

@@ -2,7 +2,7 @@
 import DeleteBookingButton from "@/app/my-bookings/components/DeleteBookingButton";
 
 const MyBookingsTable = ({ bookings = [], onDeleteBooking }) => {
-  console.log("Bookings", bookings);
+  // console.log("Bookings", bookings);
 
   return (
     <div className="p-6 bg-white rounded-2xl shadow-lg">
