@@ -4,7 +4,7 @@ import CheckoutForm from "../../../components/forms/CheckoutForm";
 const CheckoutPage = async ({ params }) => {
   const { id } = params;
 
-  const res = await fetch(`http://localhost:3000/api/services/${id}`, {
+  const res = await fetch(`https://car-doctor-roan.vercel.app/api/services/${id}`, {
     cache: "no-store",
   });
 

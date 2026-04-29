@@ -6,7 +6,7 @@ import SectionHeader from "./SectionHeader";
 export default async function ServicesPage() {
   try {
     // 🔧 Use environment variable if API URL changes
-    const res = await fetch("http://localhost:3000/api/services", {
+    const res = await fetch("https://car-doctor-roan.vercel.app/api/services", {
       cache: "no-store",
     });
 

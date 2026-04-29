@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default async function PopularProductSection() {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://car-doctor-roan.vercel.app";
 
     const res = await fetch(`${baseUrl}/api/popular-products`, {
       cache: "no-store",

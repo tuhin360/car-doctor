@@ -1,6 +1,4 @@
-// src/app/popularProducts/page.jsx
 import ProductCard from "../../components/ProductCard";
-// import SectionHeader from "../../components/SectionHeader";
 import Link from "next/link";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import SectionHeader from "../components/SectionHeader";
@@ -10,7 +8,7 @@ export default async function PopularProductsPage({ searchParams }) {
   const limit = 6;
 
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://car-doctor-roan.vercel.app";
     const res = await fetch(`${baseUrl}/api/popular-products?page=${page}&limit=${limit}`, {
       cache: "no-store",
     });

@@ -9,7 +9,7 @@ const ServiceDetailsPage = async ({ params }) => {
   let data = null;
 
   try {
-    const res = await fetch(`http://localhost:3000/api/services/${id}`, {
+    const res = await fetch(`https://car-doctor-roan.vercel.app/api/services/${id}`, {
       cache: "no-store",
     });
 

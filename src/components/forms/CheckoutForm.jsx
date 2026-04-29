@@ -39,7 +39,7 @@ const { data: session } = useSession();
     console.log("Booking Payload", bookingPayload);
 
     try {
-      const res = await fetch("http://localhost:3000/api/bookings", {
+      const res = await fetch("https://car-doctor-roan.vercel.app/api/bookings", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

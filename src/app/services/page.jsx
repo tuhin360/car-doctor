@@ -9,7 +9,7 @@ export default async function ServicesPage({ searchParams }) {
 
   try {
     const res = await fetch(
-      `http://localhost:3000/api/services?page=${page}&limit=${limit}`,
+      `https://car-doctor-roan.vercel.app/api/services?page=${page}&limit=${limit}`,
       { cache: "no-store" }
     );
 
